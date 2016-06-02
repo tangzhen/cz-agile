@@ -61,8 +61,12 @@ module.exports = {
         }]
       }, {
         type: 'input',
-        name: 'scope',
-        message: 'Denote the scope of this change ($location, $browser, $compile, etc.):\n'
+        name: 'pair',
+        message: 'Provide the pair name:\n'
+      }, {
+        type: 'input',
+        name: 'story',
+        message: 'Privide the story number:\n'
       }, {
         type: 'input',
         name: 'subject',
@@ -71,10 +75,6 @@ module.exports = {
         type: 'input',
         name: 'body',
         message: 'Provide a longer description of the change:\n'
-      }, {
-        type: 'input',
-        name: 'footer',
-        message: 'List any breaking changes or issues closed by this change:\n'
       }
     ]).then(function(answers) {
 
@@ -92,13 +92,12 @@ module.exports = {
       scope = scope ? '(' + answers.scope.trim() + ')' : '';
 
       // Hard limit this line
-      var head = (answers.type + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
+      var head = ('[' + answers.pair + '] - ' + answers.story + ' - ' + answers.subject.trim()).slice(0, maxLineWidth);
 
       // Wrap these lines at 100 characters
       var body = wrap(answers.body, wrapOptions);
-      var footer = wrap(answers.footer, wrapOptions);
 
-      commit(head + '\n\n' + body + '\n\n' + footer);
+      commit(head + '\n\n' + body);
     });
   }
 }
