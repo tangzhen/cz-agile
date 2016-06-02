@@ -87,10 +87,6 @@ module.exports = {
         width: maxLineWidth
       };
 
-      // parentheses are only needed when a scope is present
-      var scope = answers.scope.trim();
-      scope = scope ? '(' + answers.scope.trim() + ')' : '';
-
       // Hard limit this line
       var head = ('[' + answers.pair + '] - ' + answers.story + ' - ' + answers.subject.trim()).slice(0, maxLineWidth);
 
