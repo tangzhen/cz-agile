@@ -88,7 +88,7 @@ module.exports = {
       };
 
       // Hard limit this line
-      var head = ('[' + answers.pair + '] - ' + answers.story + ' - ' + answers.subject.trim()).slice(0, maxLineWidth);
+      var head = ('[' + answers.pair + ']-' + answers.story + '-' + answers.subject.trim()).slice(0, maxLineWidth);
 
       // Wrap these lines at 100 characters
       var body = wrap(answers.body, wrapOptions);
